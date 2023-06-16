@@ -37,19 +37,19 @@
 
 namespace Observables {
 std::vector<double> RDF::operator()() const {
-  std::vector<Particle> particles1 = fetch_particles(ids1());
+  auto particles1 = fetch_particles(ids1());
   std::vector<const Particle *> particles_ptrs1(particles1.size());
   boost::transform(particles1, particles_ptrs1.begin(),
-                   [](auto const &p) { return std::addressof(p); });
+                   [](auto const &p) { return std::addressof(p.get()); });
 
   if (ids2().empty()) {
     return this->evaluate(particles_ptrs1, {});
   }
 
-  std::vector<Particle> particles2 = fetch_particles(ids2());
+  auto particles2 = fetch_particles(ids2());
   std::vector<const Particle *> particles_ptrs2(particles2.size());
   boost::transform(particles2, particles_ptrs2.begin(),
-                   [](auto const &p) { return std::addressof(p); });
+                   [](auto const &p) { return std::addressof(p.get()); });
   return this->evaluate(particles_ptrs1, particles_ptrs2);
 }
 

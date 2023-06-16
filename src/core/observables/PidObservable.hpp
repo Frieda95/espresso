@@ -53,8 +53,14 @@ class PidObservable : virtual public Observable {
   /** Identifiers of particles measured by this observable */
   std::vector<int> m_ids;
 
+  std::vector<double>
+  evaluate(std::vector<std::reference_wrapper<Particle>> particles,
+           const ParticleObservables::traits<Particle> &traits) const {
+            return evaluate(Utils::Span<std::reference_wrapper<Particle>>{particles}, traits);
+           }
+
   virtual std::vector<double>
-  evaluate(ParticleReferenceRange particles,
+  evaluate(Utils::Span<std::reference_wrapper<Particle>> particles,
            const ParticleObservables::traits<Particle> &traits) const = 0;
 
 public:
@@ -110,13 +116,15 @@ public:
     return detail::shape_impl<decltype(declval<ObsType>()(
         declval<ParticleReferenceRange>()))>::eval(ids().size());
   }
-
-  std::vector<double>
-  evaluate(ParticleReferenceRange particles,
+// auto const& [local_pids, local_traits] = obs.evaluate(...)
+ std::pair<std::vector<int>,std::vector<double>> 
+  evaluate(Utils::Span<std::reference_wrapper<Particle>> particles,
            const ParticleObservables::traits<Particle> &) const override {
     std::vector<double> res;
     Utils::flatten(ObsType{}(particles), std::back_inserter(res));
-    return res;
+    std::vector<int> pids;
+    Utils::flatten(ParticleObservables::Identities{}(particles), std::back_inserter(pids));
+    return {pids, res};
   }
 };
 

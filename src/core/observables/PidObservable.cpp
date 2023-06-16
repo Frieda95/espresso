@@ -26,11 +26,8 @@
 
 namespace Observables {
 std::vector<double> PidObservable::operator()() const {
-  std::vector<Particle> particles = fetch_particles(ids());
-
-  std::vector<std::reference_wrapper<const Particle>> particle_refs(
-      particles.begin(), particles.end());
-  return this->evaluate(ParticleReferenceRange(particle_refs),
+  auto particles = fetch_particles(ids());
+  return this->evaluate(particles,
                         ParticleObservables::traits<Particle>{});
 }
 } // namespace Observables

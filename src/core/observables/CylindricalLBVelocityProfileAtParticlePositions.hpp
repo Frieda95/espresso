@@ -37,7 +37,7 @@ public:
   using CylindricalPidProfileObservable::CylindricalPidProfileObservable;
 
   std::vector<double>
-  evaluate(ParticleReferenceRange particles,
+  evaluate(Utils::Span<std::reference_wrapper<Particle>> particles,
            const ParticleObservables::traits<Particle> &) const override;
 
   std::vector<std::size_t> shape() const override {

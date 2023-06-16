@@ -30,6 +30,7 @@ namespace ParticleObservables {
  * of observables independent of the particle type.
  */
 template <> struct traits<Particle> {
+  auto id(Particle const &p) const { return p.id(); }
   auto position(Particle const &p) const { return p.pos(); }
   auto velocity(Particle const &p) const { return p.v(); }
   auto force(Particle const &p) const { return p.force(); }

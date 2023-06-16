@@ -45,7 +45,7 @@ public:
   }
 
   std::vector<double>
-  evaluate(ParticleReferenceRange particles,
+  evaluate(Utils::Span<std::reference_wrapper<Particle>> particles,
            const ParticleObservables::traits<Particle> &traits) const override {
     std::vector<double> res(n_values());
 

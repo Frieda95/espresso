@@ -31,7 +31,7 @@
 
 namespace Observables {
 std::vector<double> CylindricalLBVelocityProfileAtParticlePositions::evaluate(
-    Utils::Span<std::reference_wrapper<const Particle>> particles,
+    Utils::Span<std::reference_wrapper<Particle>> particles,
     const ParticleObservables::traits<Particle> &traits) const {
   Utils::CylindricalHistogram<double, 3> histogram(n_bins(), limits());
 
