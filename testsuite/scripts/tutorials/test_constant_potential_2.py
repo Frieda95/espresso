@@ -31,5 +31,6 @@ class Tutorial(ut.TestCase):
         self.assertAlmostEqual(
             tutorial.POTENTIAL_DIFF / tutorial.measured_potential_difference, 1, 1)
 
+
 if __name__ == "__main__":
     ut.main()
