@@ -19,7 +19,7 @@ import unittest as ut
 import importlib_wrapper
 
 tutorial, skipIfMissingFeatures = importlib_wrapper.configure_and_import(
-    "@TUTORIALS_DIR@/constant_potential/constant_potential_part2.py")
+    "@TUTORIALS_DIR@/constant_potential/const_pot_part2.py")
 
 
 @skipIfMissingFeatures
