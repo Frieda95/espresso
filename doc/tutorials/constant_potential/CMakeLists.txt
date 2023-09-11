@@ -22,4 +22,5 @@ configure_tutorial_target(TARGET tutorial_constant_potential DEPENDS
 
 nb_export(TARGET tutorial_constant_potential SUFFIX "1" FILE
           "const_pot_part1.ipynb" HTML_RUN)
-nb_export(TARGET tutorial_lb SUFFIX "2" FILE "const_pot_part2.ipynb" HTML_RUN)
+nb_export(TARGET tutorial_constant_potential SUFFIX "2" FILE 
+          "const_pot_part2.ipynb" HTML_RUN)
