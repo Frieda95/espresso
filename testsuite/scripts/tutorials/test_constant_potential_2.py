@@ -22,15 +22,15 @@ import numpy as np
 tutorial, skipIfMissingFeatures = importlib_wrapper.configure_and_import(
     "@TUTORIALS_DIR@/constant_potential/constant_potential_part2.py")
 
-
+ 
 @skipIfMissingFeatures
 class Tutorial(ut.TestCase):
 
-    def test_potential_difference(self):
+     def test_potential_difference(self):
         # Test that the applied potential difference equals the one from
         # integrating Poisson equation
         self.assertAlmostEqual(
-            tutorial.POTENTIAL_DIFF/tutorial.measured_potential_difference, 1, 1)
+            tutorial.POTENTIAL_DIFF / tutorial.measured_potential_difference, 1, 1)
 
 if __name__ == "__main__":
     ut.main()
