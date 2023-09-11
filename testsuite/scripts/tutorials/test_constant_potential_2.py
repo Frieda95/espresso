@@ -17,16 +17,15 @@
 
 import unittest as ut
 import importlib_wrapper
-import numpy as np
 
 tutorial, skipIfMissingFeatures = importlib_wrapper.configure_and_import(
     "@TUTORIALS_DIR@/constant_potential/constant_potential_part2.py")
 
- 
+
 @skipIfMissingFeatures
 class Tutorial(ut.TestCase):
 
-     def test_potential_difference(self):
+    def test_potential_difference(self):
         # Test that the applied potential difference equals the one from
         # integrating Poisson equation
         self.assertAlmostEqual(
